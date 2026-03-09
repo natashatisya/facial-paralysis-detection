@@ -1,4 +1,4 @@
-# Facial Paralysis Detection System
+# Automated Facial Paralysis Detection System using Inception Resnet-V2
 
 A deep learning-based system to detect facial paralysis using computer vision.
 
