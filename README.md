@@ -23,15 +23,7 @@ detection of normal and paralyzed facial expressions.
 ## Download Pre-trained Models
 Models are too large for GitHub. Download here:
 
-> [Download All Models (Google Drive)](https://drive.google.com/drive/folders/1fiSqhKOw-MDmXY9ue5RQChcCaHEEZg44?usp=drive_link)
-
-After downloading, place the model files inside the `Model/` folder:
-```
-Model/
-├── inception_resnetv2_model.h5
-├── densenet_model.h5
-└── vgg19_model.h5
-```
+[Download All Models (Google Drive)](https://drive.google.com/drive/folders/1fiSqhKOw-MDmXY9ue5RQChcCaHEEZg44?usp=drive_link)
 
 ## How to Run
 
@@ -47,21 +39,29 @@ pip install flask tensorflow keras opencv-python numpy flask-socketio
 ```
 
 ### 3. Download and place model files
-Download from Google Drive link above and place in `Model/` folder.
+Download from Google Drive link above and place in `Model/` folder:
+```
+Model/
+├── inception_resnetv2_model.h5
+├── densenet_model.h5
+└── vgg19_model.h5
+```
 
 ### 4. Run the app
+Open terminal in your project folder and type:
 ```
 python app.py
 ```
 
 ### 5. Open in browser
+After running, open your browser and go to:
 ```
 http://localhost:5000
 ```
 
 ## Features
-- **Real-time detection** via webcam
-- **Image upload** for facial paralysis prediction
+- Real-time detection via webcam
+- Image upload for facial paralysis prediction
 - Displays result as **Normal Face** or **Stroke Face** with confidence score
 
 ## Built With
