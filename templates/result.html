@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Metadata for character set and viewport -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Result Analysis</title>
+  <!-- Link to the external stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
+</head>
+<body>
+  <!-- Main container for the webpage -->
+  <div class="mainpage">
+    <!-- Navigation Bar -->
+    <div class="navbar">
+      <!-- Navigation bar with buttons for Home, About and  Upload  -->
+      <button class="top-button" onclick="location.href='/'">Home</button>
+      <button class="top-button" onclick="location.href='/about'">About</button>
+      <button class="top-button" onclick="location.href='/upload'">Upload</button>
+    </div>
+
+    <!-- Heading text -->
+    <div class="heading-text">
+      <h1>Result Analysis</h1>
+    </div>
+    
+    <!-- Slideshow container -->
+    <div class="slideshow-container">
+      <!-- Full-width images with number and caption text -->
+      <div class="mySlides fade">
+        <div class="numbertext">1 / 4</div>
+        <img src="{{ url_for('static', filename='images/result1.png') }}" alt="Result 1" style="width:100%">
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">2 / 4</div>
+        <img src="{{ url_for('static', filename='images/result2.png') }}" alt="Result 2" style="width:100%">
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">3 / 4</div>
+        <img src="{{ url_for('static', filename='images/result3.png') }}" alt="Result 3" style="width:100%">
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">4 / 4</div>
+        <img src="{{ url_for('static', filename='images/result4.png') }}" alt="Result 4" style="width:100%">
+      </div>
+
+      <!-- Next and previous buttons -->
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+
+  <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    // Function to show the slide with the given index
+    function showSlides(n) {
+      let i;
+      // Get all elements with the class "mySlides" (assuming these are your slide elements)
+      let slides = document.getElementsByClassName("mySlides");
+      // If the index is greater than the number of slides, set it to the first slide
+      if (n > slides.length) {
+        slideIndex = 1;
+      }
+
+      // If the index is less than 1, set it to the last slide
+      if (n < 1) {
+        slideIndex = slides.length;
+      }
+
+      // Hide all slides
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+
+      // Display the current slide
+      slides[slideIndex-1].style.display = "block";
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Metadata for character set and viewport -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Page</title>
+  <!-- Link to the external stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+</head>
+<body>
+  <!-- Main container for the webpage -->
+  <div class="mainpage">
+    <!-- Navigation bar with buttons for Home and Upload -->
+    <div class="navbar">
+      <button class="top-button" onclick="location.href='/'">Home</button>
+      <button class="top-button" onclick="location.href='/upload'">Upload</button>
+    </div>
+    <!-- About section with title and learn more section -->
+    <div class="about-section">
+      <h1 class="about-title">ABOUT</h1>
+      <h2 class="learn-more-title">LEARN MORE</h2>
+      <div class="text-section">
+         <!-- Image related to facial paralysis -->
+        <img src="{{ url_for('static', filename='images/fp.jpg') }}" alt="FP Image" class="fp-image">
+        <!-- Details about facial paralysis -->
+        <div class="fp-details">
+          <h3 class="fp-title">What is facial paralysis?</h3>
+          <p class="italic-text">Facial paralysis is a condition characterized by the loss of facial muscle movement, often caused by nerve damage. This condition can result in a lack of control in facial expressions and, in some cases, lead to difficulty in speaking, eating, and other facial functions.</p>
+          <p class="italic-text">Some common causes of facial paralysis include:</p>
+          <ul class="fp-list">
+             <!-- List of common causes -->
+            <li><span class="arrow"></span> Bell's Palsy</li>
+            <li><span class="arrow"></span> Trauma or Injury</li>
+            <li><span class="arrow"></span> Stroke</li>
+            <li><span class="arrow"></span> Tumors</li>
+            <li><span class="arrow"></span> Infections</li>
+          </ul>
+          <!-- Additional information about seeking support and intervention -->
+          <p>Seeking support from healthcare professionals, counselors, and support groups is crucial for managing both the physical and emotional aspects of facial paralysis. Early intervention and prioritizing emotional well-being are key components of effective care.</p>
+        </div>
+      </div>
+    </div>
+</body>
+</html>

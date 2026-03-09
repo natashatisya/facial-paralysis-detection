@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Metadata for character set and viewport -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload page</title>
+    <!-- Link to the external stylesheet for styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/upload.css') }}">
+    <!-- Link to Font Awesome for cloud upload icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Main container for the webpage -->
+    <div class="mainpage">
+        <!-- Navigation bar with a button for Home -->
+        <div class="navbar">
+            <button class="top-button" onclick="location.href='/'">Home</button>
+        </div>
+
+        <!-- Upload area with drag and drop functionality -->
+        <div class="upload-area">
+            <form action="/predict" method="POST" enctype="multipart/form-data" id="uploadImageForm">
+                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                <header>Drag & Drop to Upload Image</header>
+                <span>OR</span>
+                <label for="fileInput" class="browse-button">Browse Image</label>
+                <input type="file" id="fileInput" name="file" style="display: none">
+                <!-- Container for displaying the image preview -->
+                <div class="image-container">
+                    <!-- Image preview element -->
+                    <img id="imagePreview" style="max-width: 100%; max-height: 300px; display: none">
+                    <button type="submit" class="browse-button" style="display: none">Submit</button>
+                </div>
+            </form>
+        </div>        
+
+        <!-- Script section for handling file input and image processing -->
+        <script>
+            const fileInput = document.getElementById("fileInput");
+            const imagePreview = document.getElementById("imagePreview");
+            const processButton = document.querySelector("form button[type='submit']");
+            const browseButton = document.querySelector(".browse-button");
+            const UploadImageForm = document.getElementById("uploadImageForm")
+
+            // Function to handle image processing and redirection to previewimage.html
+            function processImage(file) {
+                if (file) {
+                    
+                    // Read the selected image file
+                    const reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        // Store the image in sessionStorage
+                        sessionStorage.setItem("uploadedImage", e.target.result);
+                    };
+
+                    reader.readAsDataURL(file);
+
+                    // Submit form to upload file
+                    UploadImageForm.submit();
+                }
+            }
+
+            // Event listener for file input change
+            fileInput.addEventListener("change", function() {
+                const file = fileInput.files[0];
+                processImage(file);
+            });
+
+            // Prevent the default drop behavior and process the dropped image
+            document.addEventListener("dragover", function(e) {
+                e.preventDefault();
+            });
+
+            document.addEventListener("drop", function(e) {
+                e.preventDefault();
+                const file = e.dataTransfer.files[0];
+                processImage(file);
+            });
+        </script>
+    </body>
+</html>

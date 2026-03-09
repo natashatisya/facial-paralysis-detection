@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadata for character set and viewport -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Image</title>
+    <!-- Link to the external stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/previewimage.css') }}">
+</head>
+<body>
+    <!-- Main container for the webpage -->
+    <div class="mainpage">
+        <!-- Navigation Bar -->
+        <div class="navbar">
+            <!-- Navigation bar with buttons for Home and Upload -->
+            <button class="top-button" onclick="location.href='/'">Home</button>
+            <button class="top-button" onclick="location.href='/upload'">Upload</button>
+        </div>
+
+        <!-- Container for the main content -->
+        <div class="box-container">
+            <!-- First Row with Title -->
+            <div class="title-row">
+                <h1 class="box-title">Facial Paralysis Detection</h1>
+            </div>
+
+            <!-- Second Row with Image and Identify Button -->
+            <div class="content-row">
+                <!-- Container for displaying the uploaded image -->
+                <div class="image-container">
+                    <!-- Image preview element -->
+                    <img id="previewImage" class="previewImage">
+                </div>
+                <!-- Button to initiate the image identification process -->
+                <button class="identify-button" onclick="proceedToPredictions()">Identify Image</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Retrieve the image from sessionStorage
+        const uploadedImage = sessionStorage.getItem("uploadedImage");
+    
+        // Display the image
+        const previewImage = document.getElementById("previewImage");
+        previewImage.src = uploadedImage;
+    
+        // Adjust image size to fit the container
+        previewImage.onload = function () {
+            const aspectRatio = previewImage.width / previewImage.height;
+            const container = document.querySelector(".image-container");
+    
+            // Set container size based on the aspect ratio
+            if (aspectRatio > 1) {
+                // Landscape image
+                container.style.width = "280px";
+                container.style.height = "auto";
+            } else {
+                // Portrait or square image
+                container.style.width = "auto";
+                container.style.height = "280px";
+            }
+        }
+    
+        function proceedToPredictions() {
+        // Encode the image URL before redirecting
+        window.location.href = "/prediction?img=" + encodeURIComponent(uploadedImage);
+        }
+    </script>
+</body>
+</html>

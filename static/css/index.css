@@ -1,0 +1,117 @@
+/* Importing the Poppins font from Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image: url('../images/homebackground.png');
+    background-size: 1365px 800px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.navbar {
+    width: 85%;
+    height: 15%;
+    margin-left: 77%;
+    margin-top: 4vh;
+    display: flex;
+    align-items: center;
+}
+
+button.top-button {
+    color: #fbfcfd;
+    padding: 10px 25px;
+    background: transparent;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+}
+
+button:hover {
+    color: purple;
+    background: white;
+}
+
+button:active {
+    color: purple;
+}
+
+.content {
+    color: #fbfcfd;
+    position: absolute;
+    top: 49%;
+    left: 5%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+h1 {
+    font-size: 52px;
+    padding: 0 0 35px 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.1;
+    color: #fff; 
+    text-shadow: 0 0 5px rgba(255, 255, 255, 1.2); 
+}
+
+small {
+    font-size: 15px;
+    margin: 10px 0 30px;
+    line-height: 10px;
+}
+
+.start-button {
+    padding: 10px 25px;
+    width: 170px;
+    font-size: 20px;
+    font-weight: 500;
+    margin-right: 510px;
+    border: none;
+    outline: none;
+    background: #8a047f;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.start-button{
+    background: #8a047f;
+    color: #fff;
+}
+
+#webcam_feed {
+    top: -60%;
+    left: -1%;
+    object-fit: cover;
+    display: none;
+    z-index: 2; 
+    position: absolute; 
+}
+
+.close-button {
+    position: absolute;
+    margin-top: -57%;
+    margin-left: 98%;
+    background-color: #8a047f; 
+    color: #fff; 
+    border: none;
+    padding: 5px 15px;
+    font-size: 20px;
+    font-style: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none; 
+    z-index: 3;
+}

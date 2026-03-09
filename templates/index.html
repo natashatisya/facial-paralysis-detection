@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadata for character set and viewport -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mainpage</title>
+    <!-- Link to the external stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <!-- External scripts for Socket.IO and jQuery -->
+    <script src="https://cdn.socket.io/4.2.2/socket.io.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <!-- Main container for the webpage -->
+    <div class="mainpage">
+        <!-- Navigation bar with buttons for Home, About, and Upload -->
+        <div class="navbar">
+            <button class="top-button" onclick="location.href='/'">Home</button>
+            <button class="top-button" onclick="location.href='/about'">About</button>
+            <button class="top-button" onclick="location.href='/upload'">Upload</button>
+        </div>
+        <!-- Content section with a heading, start button, webcam feed, and close button -->
+        <div class="content">
+            <!-- Heading for the main content -->
+            <h1>Automated<br>Facial Paralysis Detection<br>using Deep Learning</h1>
+            <!-- Button to start the webcam feed -->
+            <button class="start-button" id="startButton">Start</button>
+            <br>
+            <!-- Webcam feed image element -->
+            <img id="webcam_feed" src="" style="width: 102%; height: 200%; display: none;">
+            <!-- Button to close the webcam feed -->
+            <button class="close-button" onclick="toggleWebcam()">X</button>
+            <!-- JavaScript code to control the webcam feed and buttons -->
+            <script>
+                var webcamFeed = document.getElementById('webcam_feed');
+                var startButton = document.getElementById('startButton');
+                var closeButton = document.querySelector('.close-button');
+                var isWebcamStarted = false;
+
+                function toggleWebcam() {
+                    if (!isWebcamStarted) {
+                        // Set the webcam feed source when starting
+                        webcamFeed.src = "{{ url_for('video_feed') }}";
+                        // Show webcam feed and close button
+                        webcamFeed.style.display = 'block';
+                        startButton.style.display = 'none';
+                        closeButton.style.display = 'block';
+                        isWebcamStarted = true;
+                    } else {
+                        // Hide webcam feed and close button
+                        webcamFeed.style.display = 'none';
+                        startButton.style.display = 'block';
+                        closeButton.style.display = 'none';
+                        isWebcamStarted = false;
+                    }
+                }
+
+                // Add event listener to the start button
+                startButton.addEventListener('click', toggleWebcam);
+            </script>
+        </div>
+    </div>
+</body>
+</html>
